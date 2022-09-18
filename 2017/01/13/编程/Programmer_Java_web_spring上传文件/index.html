@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.fetdesign.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="通过spring上传文件示例：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring上传文件">
+<meta property="og:url" content="https://blog.fetdesign.com/2017/01/13/%E7%BC%96%E7%A8%8B/Programmer_Java_web_spring%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:site_name" content="MRYM">
+<meta property="og:description" content="通过spring上传文件示例：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-01-13T04:37:01.000Z">
+<meta property="article:modified_time" content="2019-01-06T09:04:19.927Z">
+<meta property="article:author" content="Mrym">
+<meta property="article:tag" content="Spring">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blog.fetdesign.com/2017/01/13/%E7%BC%96%E7%A8%8B/Programmer_Java_web_spring%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.fetdesign.com/2017/01/13/%E7%BC%96%E7%A8%8B/Programmer_Java_web_spring%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/","path":"2017/01/13/编程/Programmer_Java_web_spring上传文件/","title":"spring上传文件"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>spring上传文件 | MRYM</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131581164-2"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-131581164-2","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MRYM</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mrym</p>
+  <div class="site-description" itemprop="description">walk step by step</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.fetdesign.com/2017/01/13/%E7%BC%96%E7%A8%8B/Programmer_Java_web_spring%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mrym">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MRYM">
+      <meta itemprop="description" content="walk step by step">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="spring上传文件 | MRYM">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          spring上传文件
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-01-13 12:37:01" itemprop="dateCreated datePublished" datetime="2017-01-13T12:37:01+08:00">2017-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2019-01-06 17:04:19" itemprop="dateModified" datetime="2019-01-06T17:04:19+08:00">2019-01-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>通过spring上传文件示例：</p>
+<span id="more"></span>
+<pre><code>package edu.qlnu.mxj.action;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import com.opensymphony.xwork2.ActionContext;
+import edu.qlnu.mxj.service.HomeworkService;
+import edu.qlnu.mxj.service.StaffService;
+
+@SuppressWarnings(&quot;serial&quot;)
+public class UploadAction extends BaseAction &#123;
+    private String hwNo;
+    private String hwName;
+    private String mes;
+    private String author;
+    private HomeworkService homeworkService;
+    private StaffService staffService;
+    
+    public StaffService getStaffService() &#123;
+        return staffService;
+    &#125;
+
+    public void setStaffService(StaffService staffService) &#123;
+        this.staffService = staffService;
+    &#125;
+
+    public String getHwNo() &#123;
+        return hwNo;
+    &#125;
+
+    public void setHwNo(String hwNo) &#123;
+        this.hwNo = hwNo;
+    &#125;
+
+    public String getHwName() &#123;
+        return hwName;
+    &#125;
+
+    public void setHwName(String hwName) &#123;
+        this.hwName = hwName;
+    &#125;
+
+    public String getMes() &#123;
+        return mes;
+    &#125;
+
+    public void setMes(String mes) &#123;
+        this.mes = mes;
+    &#125;
+
+    public String getAuthor() &#123;
+        return author;
+    &#125;
+
+    public void setAuthor(String author) &#123;
+        this.author = author;
+    &#125;
+
+    public HomeworkService getHomeworkService() &#123;
+        return homeworkService;
+    &#125;
+
+    public void setHomeworkService(HomeworkService homeworkService) &#123;
+        this.homeworkService = homeworkService;
+    &#125;
+
+    public String uploadFile() &#123;										System.out.println(&quot;1&quot;);
+        HttpServletRequest request = ServletActionContext.getRequest();
+//		HttpServletResponse response = ServletActionContext.getResponse();
+        DiskFileItemFactory factory = new DiskFileItemFactory();		System.out.println(&quot;1&quot;);
+        @SuppressWarnings(&quot;deprecation&quot;)
+        String path = request.getRealPath(&quot;/upload&quot;);// 设置磁盘缓冲路径
+
+        factory.setRepository(new File(path));					System.out.println(&quot;1&quot;);
+        factory.setSizeThreshold(1024 * 1024);// 设置创建缓冲大小
+
+        ServletFileUpload upload = new ServletFileUpload(factory);System.out.println(&quot;1&quot;);
+        upload.setSizeMax(-1);// 设置上传文件限制大小,-1无上限
+        try &#123;														System.out.println(&quot;1&quot;);
+            List&lt;FileItem&gt; list = upload.parseRequest(request);System.out.println(&quot;1&quot;);
+            for (FileItem item : list) &#123;
+                // String name = item.getFieldName();
+                if (item.isFormField()) &#123;// 判断是否是文件流
+
+                    item.getString(&quot;UTF-8&quot;);						System.out.println(&quot;1&quot;);
+                &#125; else &#123;
+                    String value = item.getName();// 会将完整路径名传过来
+                    int start = value.lastIndexOf(&quot;\\&quot;);						System.out.println(&quot;1&quot;);
+                    value.substring(start + 1);
+                    InputStream in = item.getInputStream();						System.out.println(&quot;1&quot;);
+
+                    FileOutputStream fos = new FileOutputStream(displayTime() + &quot;.zip&quot;);System.out.println(&quot;1&quot;);
+                    byte[] b = new byte[1024];
+                    while ((in.read(b)) != -1) &#123;
+                        fos.write(b);
+                    &#125;
+                    in.close();
+                    fos.close();
+                    System.out.println(&quot;upload success!&quot;);
+                &#125;
+            &#125;
+        &#125; catch (Exception e) &#123;
+
+            e.printStackTrace();
+        &#125;
+        return &quot;upload&quot;;
+    &#125;
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public String upload2() throws IllegalStateException, IOException&#123;   
+    	HttpServletRequest request = ServletActionContext.getRequest();
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver(request.getSession().getServletContext()); 
+        
+
+//        MultipartResolver resolver = new CommonsMultipartResolver(request.getSession().getServletContext());
+        MultipartHttpServletRequest multiRequest = resolver.resolveMultipart(request);
+        
+        String hwName = multiRequest.getParameter(&quot;hwName&quot;);
+        String hwNo = multiRequest.getParameter(&quot;hwNo&quot;);
+        String mes = multiRequest.getParameter(&quot;mes&quot;);
+        String author = multiRequest.getParameter(&quot;author&quot;);
+        System.out.println(hwName+hwNo+mes+author);
+        //判断是否是文件  
+        if(resolver.isMultipart(request))&#123; 								 
+            //进行转换  
+//            MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest)(request); 
+            //获取所有文件名称  
+            Iterator&lt;String&gt; it = multiRequest.getFileNames();   System.out.println(&quot;222&quot;+multiRequest.getFileNames().hasNext());
+            while(it.hasNext())&#123;  System.out.println(&quot;666&quot;);
+                //根据文件名称取文件  
+                MultipartFile file = multiRequest.getFile(it.next());  
+                String fileName = file.getOriginalFilename(); System.out.println(fileName);
+                String localPath = &quot;/upload/&quot; + fileName;  System.out.println(localPath);
+                File newFile = new File(localPath);  
+                //上传的文件写入到指定的文件中  
+                file.transferTo(newFile);  
+            &#125;
+            ActionContext.getContext().getSession().put(&quot;mes&quot;, &quot;上传成功！&quot;);
+        &#125;else &#123;
+        	ActionContext.getContext().getSession().remove(&quot;mes&quot;);
+        &#125; 
+        return &quot;upload&quot;;
+    &#125;  
+    
+    public String displayTime() &#123;
+        SimpleDateFormat df = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);
+        String date = df.format(new Date());
+        return date;
+    &#125;
+&#125;
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Spring/" rel="tag"># Spring</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/01/13/%E5%B7%A5%E5%85%B7/Tools_Git_git%20hooks%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" rel="prev" title="利用git hooks进行自动部署">
+                  <i class="fa fa-chevron-left"></i> 利用git hooks进行自动部署
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/04/16/PAT/PAT_A_level_pat1001/" rel="next" title="PAT1001总结">
+                  PAT1001总结 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrym</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"paranoid521","repo":"paranoid521.github.io","client_id":"66e0e5d4940a8537cabd","client_secret":"60f4d1685ce6a975ac11f6be137ca718a8d6ec1d","admin_user":["paranoid521"],"distraction_free_mode":true,"language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"32f9bbd569ccc1285ee2395716988c4d"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

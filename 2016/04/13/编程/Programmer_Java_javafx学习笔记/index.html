@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.fetdesign.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="javaFx中文文档http:&#x2F;&#x2F;www.javafxchina.net&#x2F;blog&#x2F;docs&#x2F;tutorial1&#x2F;ml3947的博客http:&#x2F;&#x2F;blog.csdn.net&#x2F;ml3947 javaFX架构的顶层部分JavaFX场景图，是一个层级结构的节点树，表示所有用户界面的视觉元素。在场景图中的一个元素被称为一个节点(Node)。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javaFx1">
+<meta property="og:url" content="https://blog.fetdesign.com/2016/04/13/%E7%BC%96%E7%A8%8B/Programmer_Java_javafx%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="MRYM">
+<meta property="og:description" content="javaFx中文文档http:&#x2F;&#x2F;www.javafxchina.net&#x2F;blog&#x2F;docs&#x2F;tutorial1&#x2F;ml3947的博客http:&#x2F;&#x2F;blog.csdn.net&#x2F;ml3947 javaFX架构的顶层部分JavaFX场景图，是一个层级结构的节点树，表示所有用户界面的视觉元素。在场景图中的一个元素被称为一个节点(Node)。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-04-13T15:12:12.000Z">
+<meta property="article:modified_time" content="2019-01-06T09:02:44.303Z">
+<meta property="article:author" content="Mrym">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blog.fetdesign.com/2016/04/13/%E7%BC%96%E7%A8%8B/Programmer_Java_javafx%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.fetdesign.com/2016/04/13/%E7%BC%96%E7%A8%8B/Programmer_Java_javafx%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"2016/04/13/编程/Programmer_Java_javafx学习笔记/","title":"javaFx1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>javaFx1 | MRYM</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131581164-2"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-131581164-2","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MRYM</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mrym</p>
+  <div class="site-description" itemprop="description">walk step by step</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.fetdesign.com/2016/04/13/%E7%BC%96%E7%A8%8B/Programmer_Java_javafx%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mrym">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MRYM">
+      <meta itemprop="description" content="walk step by step">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="javaFx1 | MRYM">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          javaFx1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-04-13 23:12:12" itemprop="dateCreated datePublished" datetime="2016-04-13T23:12:12+08:00">2016-04-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2019-01-06 17:02:44" itemprop="dateModified" datetime="2019-01-06T17:02:44+08:00">2019-01-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>javaFx中文文档<br><a target="_blank" rel="noopener" href="http://www.javafxchina.net/blog/docs/tutorial1/">http://www.javafxchina.net/blog/docs/tutorial1/</a><br>ml3947的博客<br><a target="_blank" rel="noopener" href="http://blog.csdn.net/ml3947">http://blog.csdn.net/ml3947</a></p>
+<p>javaFX架构的顶层部分JavaFX场景图，是一个层级结构的节点树，表示所有用户界面的视觉元素。在场景图中的一个元素被称为一个节点(Node)。<span id="more"></span>每个节点都有一个ID、样式类和包围盒(bounding volume)。除了根节点之外，在场景图中的所有节点都有一个父节点、0个或多个子节点。</p>
+<p>允许使用Java的强大特性，例如泛型、注解、多线程、Lamda表达式(从Java8开始引入)</p>
+<p>##GLASS窗体工具包</p>
+<p>Glass窗体工具包(Glass Windowing Toolkit)在图2-1中处于整体架构的中间位置，它处于JavaFX图形技术栈的最底层。其主要职责是提供本地操作服务，例如窗体、计时器、皮肤。它是连接JavaFX层与本地操作系统的平台无关层。</p>
+<p>JavaFX应用程序线程：这是JavaFX应用开发者使用的主要线程。任何“活动”的场景都是窗体的一部分，它们都必需通过此线程来访问。场景图可以通过一个后台线程来创建和控制，但是如果其根节点与任何活动对象相关，则该场景图必需通过JavaFX应用程序线程来访问。这允许开发者在背景线程上创建复杂的场景图，而与此同时在“活动”场景中保持动画的流畅。由于JavaFX应用程序线程与Swing和AWT事件调度线程(EDT)不同，所以在将JavaFX代码嵌入到Swing应用程序中时必需小心。</p>
+<p>##布局</p>
+<p>布局容器(Layoutcontainer)或面板(Pane)允许对JavaFX应用程序场景图中的UI控件进行灵活、动态的排布。JavaFX Layout API包括下列容器类：</p>
+<p>● BorderPane类将其内容节点放到上、下、左、右、中各个区域中。</p>
+<p>● HBox类将其内容节点横向排成一行。</p>
+<p>● VBox类将其内容节点纵向排成一列。</p>
+<p>● StackPane类将其内容节点摞在一起。</p>
+<p>● GridPane类允许开发者创建一个灵活的网格，按行列来布局其内容节点。</p>
+<p>● FlowPane类将其内容按行或列进行”流式“布局，当遇到横向或纵向的边界时自动进行换行或换列。</p>
+<p>● TilePane类将其内容放到统一大小的单元格中。</p>
+<p>● AnchorPane类允许开发者创建锚节点，将控件停靠于布局的上下左右各边，也可以居中停靠。</p>
+<p>为了获得理想的布局结构，可以在JavaFX应用中嵌套使用各类布局。</p>
+<p>##视觉效果</p>
+<p>在JavaFX场景图中开发富客户端界面包括使用视觉效果来实时地美化JavaFX应用程序的外观。JavaFX的视觉效果主要是基于像素的图像，因此它们需要先获取场景图中节点渲染成图像，再将视觉效果添加上去。</p>
+<p>JavaFX中通过下面的类来提供一些常用的视觉效果：</p>
+<p>● Drop Shadow——应用视觉效果后将为给定的内容渲染一个在它的后面的阴影。</p>
+<p>● Reflection——在真实的内容后面渲染一个反射倒影。</p>
+<p>● Lighting——模仿一个光源的照射效果，使一个平面的对象看起来更真实、具有三维效果。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016/03/20/%E7%BC%96%E7%A8%8B/Programmer_Java_eclipse_no_api/" rel="prev" title="error:restriction on required library rt.jar test">
+                  <i class="fa fa-chevron-left"></i> error:restriction on required library rt.jar test
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016/05/02/%E5%B7%A5%E5%85%B7/Tools_Git_git_sample/" rel="next" title="git使用简介">
+                  git使用简介 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrym</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"paranoid521","repo":"paranoid521.github.io","client_id":"66e0e5d4940a8537cabd","client_secret":"60f4d1685ce6a975ac11f6be137ca718a8d6ec1d","admin_user":["paranoid521"],"distraction_free_mode":true,"language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"4b0b514c111f54f41b2e9d3020b84eb2"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

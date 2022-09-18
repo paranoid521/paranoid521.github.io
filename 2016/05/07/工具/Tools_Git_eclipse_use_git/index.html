@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.fetdesign.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Eclipse里集成了git，所以使用比较方便。不需要再在git bash里输入命令。从代码库clone项目后，将其导入eclipse。在项目上点右键—&gt;Team">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在eclipse上使用git">
+<meta property="og:url" content="https://blog.fetdesign.com/2016/05/07/%E5%B7%A5%E5%85%B7/Tools_Git_eclipse_use_git/index.html">
+<meta property="og:site_name" content="MRYM">
+<meta property="og:description" content="Eclipse里集成了git，所以使用比较方便。不需要再在git bash里输入命令。从代码库clone项目后，将其导入eclipse。在项目上点右键—&gt;Team">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git001.PNG">
+<meta property="og:image" content="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_002_pull.PNG">
+<meta property="og:image" content="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_003_branch1.PNG">
+<meta property="og:image" content="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_004_merge.PNG">
+<meta property="og:image" content="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_005_merge2.PNG">
+<meta property="article:published_time" content="2016-05-06T16:15:01.000Z">
+<meta property="article:modified_time" content="2019-01-06T09:04:57.040Z">
+<meta property="article:author" content="Mrym">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git001.PNG">
+
+
+<link rel="canonical" href="https://blog.fetdesign.com/2016/05/07/%E5%B7%A5%E5%85%B7/Tools_Git_eclipse_use_git/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.fetdesign.com/2016/05/07/%E5%B7%A5%E5%85%B7/Tools_Git_eclipse_use_git/","path":"2016/05/07/工具/Tools_Git_eclipse_use_git/","title":"在eclipse上使用git"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>在eclipse上使用git | MRYM</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131581164-2"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-131581164-2","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MRYM</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mrym</p>
+  <div class="site-description" itemprop="description">walk step by step</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.fetdesign.com/2016/05/07/%E5%B7%A5%E5%85%B7/Tools_Git_eclipse_use_git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mrym">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MRYM">
+      <meta itemprop="description" content="walk step by step">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="在eclipse上使用git | MRYM">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在eclipse上使用git
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-05-07 00:15:01" itemprop="dateCreated datePublished" datetime="2016-05-07T00:15:01+08:00">2016-05-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2019-01-06 17:04:57" itemprop="dateModified" datetime="2019-01-06T17:04:57+08:00">2019-01-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Eclipse里集成了git，所以使用比较方便。不需要再在git bash里输入命令。<br>从代码库clone项目后，将其导入eclipse。<br>在项目上点右键—&gt;Team<span id="more"></span><br><img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git001.PNG" alt="git001"></p>
+<p>写代码之前，先pull（从远端更新并合并），防止发生冲突，处理冲突会比较麻烦。<br><img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_002_pull.PNG" alt="git002"></p>
+<p>Switch To选择分支，New Branch新建一个自己的本地分支，此分支不需要push到远端，仅用于合并到dev分区。每个分支相当于不同版本的代码库。<br>写代码时，切换到自己的分支，如下图MXJ分支，目前在dev分支上。</p>
+<p><img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_003_branch1.PNG" alt="git003"></p>
+<p>代码写完后，执行Commit，commit时需要填写提交信息，提交代码到本地分支自己的分支。<br>此时的提交只需要Commit，不用Commit and Push，因为此时还不需要发布到远端。</p>
+<p>接着再pull一遍，防止有人push过代码，此时有冲突，则需处理冲突。</p>
+<p>没有冲突后，再合并分支，Merge，把当前自己的分支合并到dev分支。<br><img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_004_merge.PNG" alt="git004"><br>有对勾的MXJ分支为现在所处的分支，选中dev分支表示把MXJ分支合并到dev分支，点击merge合并。合并后的dev分支的内容和MXJ分支的相同。<br> <img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_005_merge2.PNG" alt="git005"><br>此时切换到dev分支，Switch To—&gt;dev，点击Push Branch ‘dev’。<br>dev分支会被推送到远端。</p>
+<p>不要把代码push到master分支。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Git/" rel="tag"># Git</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016/05/02/%E5%B7%A5%E5%85%B7/Tools_Git_git_sample/" rel="prev" title="git使用简介">
+                  <i class="fa fa-chevron-left"></i> git使用简介
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016/05/07/%E5%B7%A5%E5%85%B7/Tools_Git_git_conflict/" rel="next" title="git的冲突解决">
+                  git的冲突解决 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mrym</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"paranoid521","repo":"paranoid521.github.io","client_id":"66e0e5d4940a8537cabd","client_secret":"60f4d1685ce6a975ac11f6be137ca718a8d6ec1d","admin_user":["paranoid521"],"distraction_free_mode":true,"language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"0b5e0e12e1fb2892fef1c7cba4665d2e"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
